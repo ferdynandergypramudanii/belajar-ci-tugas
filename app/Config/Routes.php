@@ -30,3 +30,10 @@ $routes->group('keranjang', ['filter' => 'auth'], function ($routes) {
 
 $routes->get('/keranjang', 'TransaksiController::index', ['filter' => 'auth']);
 $routes->get('/faq' ,'Home::faq',['filter' => 'auth']);
+
+$routes->get('produk_category', 'ProdukCategoryController::index');
+$routes->post('produk_category/create', 'ProdukCategoryController::create');
+$routes->post('produk_category/edit/(:num)', 'ProdukCategoryController::edit/$1');
+$routes->get('produk_category/delete/(:num)', 'ProdukCategoryController::delete/$1');
+
+
