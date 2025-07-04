@@ -44,3 +44,9 @@ $routes->post('produk_category/edit/(:num)', 'ProdukCategoryController::edit/$1'
 $routes->get('produk_category/delete/(:num)', 'ProdukCategoryController::delete/$1');
 
 $routes->resource('api', ['controller' => 'apiController']);
+
+
+$routes->get('/diskon', 'Diskon::index');
+$routes->post('/diskon', 'Diskon::create');
+$routes->post('/diskon/edit/(:num)', 'Diskon::edit/$1');
+$routes->get('/diskon/delete/(:num)', 'Diskon::delete/$1');

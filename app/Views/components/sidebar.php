@@ -29,13 +29,23 @@
                 <i class="bi bi-receipt"></i>
                 <span>Produk</span>
             </a>
-        </li><!-- End Produk Nav -->         
+        </li><!-- End Produk Nav -->
+
+        <!-- Manajemen Diskon hanya untuk admin -->
+        <?php if (session('role') === 'admin'): ?>
+        <li class="nav-item">
+            <a class="nav-link <?php echo (uri_string() == 'diskon') ? "" : "collapsed" ?>" href="<?= base_url('diskon') ?>">
+                <i class="bi bi-percent"></i>
+                <span>Manajemen Diskon</span>
+            </a>
+        </li><!-- End Diskon Nav -->
+        <?php endif; ?>
 
         <li class="nav-item">
             <a class="nav-link <?php echo (uri_string() == 'profile') ? "" : "collapsed" ?>" href="profile">
-            <i class="bi bi-person"></i>
-            <span>Profile</span>
-        </a>
+                <i class="bi bi-person"></i>
+                <span>Profile</span>
+            </a>
         </li><!-- End Profile Nav -->
         
         <li class="nav-item">
@@ -44,6 +54,7 @@
                 <span>Faq</span>
             </a>
         </li><!-- End Faq Nav --> 
+
     </ul>
 
 </aside><!-- End Sidebar-->
