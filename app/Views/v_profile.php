@@ -48,14 +48,20 @@ History Transaksi Pembelian <strong><?= $username ?></strong>
                                         <?php if ($item2['foto'] != '' and file_exists("img/" . $item2['foto'] . "")) : ?>
                                             <img src="<?php echo base_url() . "img/" . $item2['foto'] ?>" width="100px">
                                         <?php endif; ?>
-                                        <strong><?= $item2['nama'] ?></strong>
-                                        <?= number_to_currency($item2['harga'], 'IDR') ?>
-                                        <br>
-                                        <?= "(" . $item2['jumlah'] . " pcs)" ?><br>
-                                        <?= number_to_currency($item2['subtotal_harga'], 'IDR') ?>
-                                        <hr>
+                                        <strong><?= $item2['nama'] ?></strong><br>
+                                        Harga Satuan: <?= number_to_currency($item2['harga'], 'IDR') ?><br>
+                                        <?php if (!empty($item2['diskon']) && $item2['diskon'] > 0): ?>
+                                            Diskon: <?= number_to_currency($item2['diskon'], 'IDR') ?><br>
+                                        <?php endif; ?>
+                                        Jumlah: <?= $item2['jumlah'] ?> pcs<br>
+                                        <?php
+                                        // Hitung ulang subtotal secara benar (opsional jika tidak disediakan langsung)
+                                        $harga_diskon = $item2['harga'] - $item2['diskon'];
+                                        $subtotal = $harga_diskon * $item2['jumlah'];
+                                        ?>
+                                        Subtotal: <strong><?= number_to_currency($subtotal, 'IDR') ?></strong><br>
                                     <?php endforeach; ?>
-                                    Ongkir <?= number_to_currency($item['ongkir'], 'IDR') ?>
+                                    Ongkir: <strong><?= number_to_currency($item['ongkir'], 'IDR') ?></strong>
                                 </div>
                             </div>
                         </div>
